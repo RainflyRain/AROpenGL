@@ -14,7 +14,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class MyGLRenderer implements GLSurfaceView.Renderer{
 
 
-   Triangle triangle;
+   Circle triangle;
 
     private final float[] mMVPMatrix = new float[16];
     private final float[] mProjectionMatrix = new float[16];
@@ -26,7 +26,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
 
         GLES20.glClearColor(255f,255f,255f,1.0f);
 
-        triangle = new Triangle();
+        triangle = new Circle();
     }
 
     @Override
