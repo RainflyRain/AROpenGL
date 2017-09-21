@@ -1,4 +1,4 @@
-package com.wl.opes;
+package com.wl.opes.shape;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -16,5 +16,12 @@ public class MyGLSurfaceView extends GLSurfaceView{
         setEGLContextClientVersion(2);
         myGLRenderer = new MyGLRenderer();
         setRenderer(myGLRenderer);
+    }
+
+    public void setIndex(int index){
+        if (myGLRenderer != null){
+            myGLRenderer.setIndex(index);
+            requestRender();
+        }
     }
 }

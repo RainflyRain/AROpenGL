@@ -1,4 +1,4 @@
-package com.wl.opes;
+package com.wl.opes.shape;
 
 import android.opengl.GLES20;
 
@@ -10,7 +10,7 @@ import java.nio.FloatBuffer;
  * Created by fly on 2017/9/19.
  */
 
-public class ColorTriangle {
+public class ColorTriangle extends Shape{
 
     FloatBuffer vetextBuffer;
     FloatBuffer colorBuffer;

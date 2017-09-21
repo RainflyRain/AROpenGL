@@ -1,20 +1,18 @@
-package com.wl.opes;
+package com.wl.opes.shape;
 
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
-import java.util.ArrayList;
 
 /**
  * Created by fly on 2017/9/19.
  */
 
-public class Cube {
+public class Cube extends Shape{
 
     FloatBuffer vetextBuffer;
     FloatBuffer colorBuffer;

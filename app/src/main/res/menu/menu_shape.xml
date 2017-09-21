@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/trangle"
+        android:title="三角形" />
+    <item android:id="@+id/colorTriangle"
+        android:title="彩色三角形" />
+    <item android:id="@+id/cicle"
+        android:title="圆" />
+    <item android:id="@+id/cube"
+        android:title="正方体" />
+    <item android:id="@+id/cone"
+        android:title="圆锥" />
+    <item android:id="@+id/cylinder"
+        android:title="圆柱" />
+    <item android:id="@+id/ball"
+        android:title="球" />
+</menu>

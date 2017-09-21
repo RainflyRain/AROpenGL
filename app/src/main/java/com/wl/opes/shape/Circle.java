@@ -1,4 +1,4 @@
-package com.wl.opes;
+package com.wl.opes.shape;
 
 import android.opengl.GLES20;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by fly on 2017/9/19.
  */
 
-public class Circle {
+public class Circle extends Shape {
 
     FloatBuffer vetextBuffer;
 
@@ -68,6 +68,7 @@ public class Circle {
         GLES20.glLinkProgram(program);
     }
 
+    @Override
     public void draw(float[] mvpMatrix){
 
         //启用program
