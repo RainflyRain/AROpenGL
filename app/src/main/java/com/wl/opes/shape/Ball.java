@@ -38,7 +38,7 @@ public class Ball extends Shape{
             "     gl_FragColor = vColor;\n" +
             " }";
 
-    float triangleCoords[] = createPositions(10,0.5f);
+    float triangleCoords[] = createPositions(360,0.5f);
 
     int program;
 

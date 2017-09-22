@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.wl.opes.shape.FGLViewActivity;
+import com.wl.opes.texture.TextureActivity;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private RecyclerView recyclerView;
-    private ArrayList<MenuBean> data;
+    private ArrayList<MenuBean> beanArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +26,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_menu);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        data = new ArrayList<>();
+        beanArrayList = new ArrayList<>();
         add("绘制形体",FGLViewActivity.class);
-        add("图片处理",FGLViewActivity.class);
+        add("图片处理",TextureActivity.class);
         add("图形变换",FGLViewActivity.class);
         add("相机",FGLViewActivity.class);
         add("相机2 动画",FGLViewActivity.class);
@@ -53,7 +54,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         MenuBean bean=new MenuBean();
         bean.name=name;
         bean.clazz=clazz;
-        data.add(bean);
+        beanArrayList.add(bean);
     }
 
     private class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuHolder>{
@@ -71,7 +72,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public int getItemCount() {
-            return data.size();
+            return beanArrayList.size();
         }
 
         class MenuHolder extends RecyclerView.ViewHolder{
@@ -85,7 +86,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             public void setPosition(int position){
-                MenuBean bean=data.get(position);
+                MenuBean bean= beanArrayList.get(position);
                 mBtn.setText(bean.name);
                 mBtn.setTag(position);
             }
@@ -96,7 +97,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view){
         int position= (int)view.getTag();
-        MenuBean bean=data.get(position);
+        MenuBean bean= beanArrayList.get(position);
         startActivity(new Intent(this,bean.clazz));
     }
 

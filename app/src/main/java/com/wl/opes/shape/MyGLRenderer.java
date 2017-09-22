@@ -29,7 +29,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
 
     List<Shape> list;
     private  int index = 0;
-    float ratio;
+    static float ratio;
     private final float[] mMVPMatrix = new float[16];
     private final float[] mProjectionMatrix = new float[16];
     private final float[] mViewMatrix = new float[16];
@@ -59,7 +59,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
         ratio = (float) width / height;
 
         initMatrix();
-
     }
 
     private void initMatrix() {
@@ -85,6 +84,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
 
     public void setIndex(int index) {
         initMatrix();
+        Matrix.scaleM(mMVPMatrix,0,0.5f,0.5f,0.5f);
         this.index = index;
     }
 }

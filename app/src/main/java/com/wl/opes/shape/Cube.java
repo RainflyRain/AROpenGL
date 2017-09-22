@@ -120,11 +120,11 @@ public class Cube extends Shape{
         GLES20.glUseProgram(program);
 
 
-        Matrix.rotateM(mvpMatrix,0,45,1,1,1);
+        Matrix.rotateM(mvpMatrix,0,1,1,1,1);
 
-        Matrix.scaleM(mvpMatrix,0,0.5f,0.5f,0.5f);
+//        Matrix.scaleM(mvpMatrix,0,0.5f,0.5f,0.5f);
 
-        Matrix.rotateM(mvpMatrix,0,1f,1f,0,0);
+//        Matrix.rotateM(mvpMatrix,0,1f,1f,0,0);
 
         //获取变换矩阵 句柄，设置变换矩阵的值
         mMVPMatrixHandle = GLES20.glGetUniformLocation(program,"vMatrix");
