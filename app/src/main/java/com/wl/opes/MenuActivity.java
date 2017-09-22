@@ -29,17 +29,17 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         beanArrayList = new ArrayList<>();
         add("绘制形体",FGLViewActivity.class);
         add("图片处理",TextureActivity.class);
-        add("图形变换",FGLViewActivity.class);
-        add("相机",FGLViewActivity.class);
-        add("相机2 动画",FGLViewActivity.class);
-        add("相机3 美颜",FGLViewActivity.class);
-        add("压缩纹理动画",FGLViewActivity.class);
-        add("FBO使用",FGLViewActivity.class);
-        add("EGL后台处理",FGLViewActivity.class);
+//        add("图形变换",FGLViewActivity.class);
+//        add("相机",FGLViewActivity.class);
+//        add("相机2 动画",FGLViewActivity.class);
+//        add("相机3 美颜",FGLViewActivity.class);
+//        add("压缩纹理动画",FGLViewActivity.class);
+//        add("FBO使用",FGLViewActivity.class);
+//        add("EGL后台处理",FGLViewActivity.class);
         add("3D obj模型",FGLViewActivity.class);
-        add("obj+mtl模型",FGLViewActivity.class);
-        add("VR效果",FGLViewActivity.class);
-        add("颜色混合",FGLViewActivity.class);
+//        add("obj+mtl模型",FGLViewActivity.class);
+//        add("VR效果",FGLViewActivity.class);
+//        add("颜色混合",FGLViewActivity.class);
         recyclerView.setAdapter(new MenuAdapter());
     }
 

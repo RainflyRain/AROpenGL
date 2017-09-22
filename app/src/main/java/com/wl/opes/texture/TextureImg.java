@@ -2,19 +2,15 @@ package com.wl.opes.texture;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 
 import com.wl.opes.Utils;
 import com.wl.opes.shape.MyGLRenderer;
 
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-
-import javax.microedition.khronos.opengles.GL;
 
 /**
  * Created by fly on 2017/9/20.
@@ -50,6 +46,7 @@ public class TextureImg {
     private int positionHandle;
     private int textureHandle;
     private int coordHandle;
+    private int mMVPMatrixHandle;
 
     int program;
 
@@ -86,12 +83,14 @@ public class TextureImg {
 
     int textureId;
 
-    public void draw(){
+    public void draw(float[] mvpMatrix){
 
         //启用program
         GLES20.glUseProgram(program);
 
-        textureId = createTexture();
+        //变换矩阵
+        mMVPMatrixHandle = GLES20.glGetUniformLocation(program,"vMatrix");
+        GLES20.glUniformMatrix4fv(mMVPMatrixHandle,1,false,mvpMatrix,0);//location count transpose(转置) value offset
 
         //Vetex
         positionHandle = GLES20.glGetAttribLocation(program,"vPosition");
@@ -106,6 +105,7 @@ public class TextureImg {
         //text
         textureHandle = GLES20.glGetUniformLocation(program,"vTexture");
         GLES20.glUniform1i(textureHandle,0);
+        textureId = createTexture();
 
 
         //绘制三角形，关闭 顶点着色器 句柄
@@ -132,13 +132,14 @@ public class TextureImg {
             GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,texture[0]);
 
             //设置缩小过滤为使用纹理中坐标最接近的一个像素的颜色作为需要绘制的像素颜色
-            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,GLES20.GL_NEAREST);
+            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER,GLES20.GL_LINEAR);
             //设置放大过滤为使用纹理中坐标最接近的若干个颜色，通过加权平均算法得到需要绘制的像素颜色
             GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D,GLES20.GL_TEXTURE_MAG_FILTER,GLES20.GL_LINEAR);
+
             //设置环绕方向S，截取纹理坐标到[1/2n,1-1/2n]。将导致永远不会与border融合
             GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S,GLES20.GL_CLAMP_TO_EDGE);
             //设置环绕方向T，截取纹理坐标到[1/2n,1-1/2n]。将导致永远不会与border融合
-            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T,GLES20.GL_CLAMP_TO_EDGE);
+            GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T,GLES20.GL_REPEAT);
 
             //根据以上指定的参数，将bitmap复制到当前绑定的纹理对象
             GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, mBitmap, 0);
