@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.wl.opes.obj.ObjLoadActivity;
 import com.wl.opes.shape.FGLViewActivity;
 import com.wl.opes.texture.TextureActivity;
 
@@ -36,7 +37,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 //        add("压缩纹理动画",FGLViewActivity.class);
 //        add("FBO使用",FGLViewActivity.class);
 //        add("EGL后台处理",FGLViewActivity.class);
-        add("3D obj模型",FGLViewActivity.class);
+        add("3D obj模型",ObjLoadActivity.class);
 //        add("obj+mtl模型",FGLViewActivity.class);
 //        add("VR效果",FGLViewActivity.class);
 //        add("颜色混合",FGLViewActivity.class);

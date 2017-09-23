@@ -62,7 +62,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer{
     }
 
     private void initMatrix() {
-        Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
+        Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 17);
 
         Matrix.setLookAtM(mViewMatrix, 0, 0, 0, 7.0f, 0.0f, 0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
