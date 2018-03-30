@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.wl.opes.obj.ObjLoadActivity;
 import com.wl.opes.shape.FGLViewActivity;
@@ -21,6 +22,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private ArrayList<MenuBean> beanArrayList;
 
+    private  Button btnTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,14 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 //        add("VR效果",FGLViewActivity.class);
 //        add("颜色混合",FGLViewActivity.class);
         recyclerView.setAdapter(new MenuAdapter());
+
+        btnTest = (Button) findViewById(R.id.btn_test);
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MenuActivity.this,"test",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private class MenuBean{
