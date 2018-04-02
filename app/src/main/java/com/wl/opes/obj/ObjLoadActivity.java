@@ -26,10 +26,11 @@ public class ObjLoadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_obj_load);
         glSurfaceView = (GLSurfaceView) findViewById(R.id.glview_obj);
         glSurfaceView.setEGLContextClientVersion(2);
-        List<Obj3D> model = ObjReader.readMultiObj(this,"assets/3dres/pikachu.obj");
+
+        //初始化数据
+        List<Obj3D> model = ObjReader.readMultiObj(this,"assets/3dres/face.obj");
 
         filters = new ArrayList<>();
-
         for (int i = 0; i < model.size(); i++) {
             ObjFilter2 filter = new ObjFilter2(getResources());
             filter.setObj3D(model.get(i));
@@ -50,7 +51,7 @@ public class ObjLoadActivity extends AppCompatActivity {
                 for (ObjFilter2 f:filters){
                     f.onSizeChanged(width, height);
                     float[] matrix= Utils.getOriginalMatrix();
-                    Matrix.translateM(matrix,0,0,-0.3f,0);
+                    Matrix.translateM(matrix,0,-1,0f,0);
                     Matrix.scaleM(matrix,0,0.008f,0.008f*width/height,0.008f);
                     f.setMatrix(matrix);
                 }
@@ -58,7 +59,7 @@ public class ObjLoadActivity extends AppCompatActivity {
 
             @Override
             public void onDrawFrame(GL10 gl10) {
-                GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+                GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
                 GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
                 for (ObjFilter2 f:filters){
                     Matrix.rotateM(f.getMatrix(),0,0.3f,0,1,0);

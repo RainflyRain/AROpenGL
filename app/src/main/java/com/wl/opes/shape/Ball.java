@@ -87,7 +87,7 @@ public class Ball extends Shape{
         //获取 顶点着色器 句柄，设置 顶点数据
         positionHandle = GLES20.glGetAttribLocation(program,"vPosition");
         GLES20.glEnableVertexAttribArray(positionHandle);
-        GLES20.glVertexAttribPointer(positionHandle,COORDS_PER_VERTEX,GLES20.GL_FLOAT,false,vertexStride, vetextBuffer);//index size type normalized stride buffer
+        GLES20.glVertexAttribPointer(positionHandle,COORDS_PER_VERTEX,GLES20.GL_FLOAT,false,vertexStride, vetextBuffer);//index size type normalized stride(步幅) buffer
 
         //绘制三角形，关闭 顶点着色器 句柄
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN,0,triangleCoords.length/3);

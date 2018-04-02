@@ -56,6 +56,7 @@ public class ColorTriangle extends Shape{
     private int colorHandle;
     private int mMVPMatrixHandle;
 
+    //构造方法
     public ColorTriangle() {
 
         //color buffer
@@ -78,6 +79,7 @@ public class ColorTriangle extends Shape{
         int vertexShader = MyGLRenderer.loadShader(GLES20.GL_VERTEX_SHADER,vetexShader);
         int fragmentShader = MyGLRenderer.loadShader(GLES20.GL_FRAGMENT_SHADER,colorShader);
 
+        //创建program
         program = GLES20.glCreateProgram();
 
         GLES20.glAttachShader(program,vertexShader);
@@ -87,6 +89,7 @@ public class ColorTriangle extends Shape{
         GLES20.glLinkProgram(program);
     }
 
+    //绘制函数
     public void draw(float[] mvpMatrix){
 
         //启用program
@@ -99,12 +102,12 @@ public class ColorTriangle extends Shape{
         //获取 顶点着色器 句柄，设置 顶点数据
         positionHandle = GLES20.glGetAttribLocation(program,"vPosition");
         GLES20.glEnableVertexAttribArray(positionHandle);
-        GLES20.glVertexAttribPointer(positionHandle,COORDS_PER_VERTEX,GLES20.GL_FLOAT,false,vertexStride, vetextBuffer);//index size type normalized stride buffer
+        GLES20.glVertexAttribPointer(positionHandle,COORDS_PER_VERTEX,GLES20.GL_FLOAT,false,vertexStride, vetextBuffer);//index size type normalized stride（偏移量） buffer
 
         //获取 片段着色器 句柄， 设置颜色数据
         colorHandle = GLES20.glGetAttribLocation(program,"aColor");
         GLES20.glEnableVertexAttribArray(colorHandle);
-        GLES20.glVertexAttribPointer(colorHandle,4,GLES20.GL_FLOAT,false,0,colorBuffer);//location count data offset
+        GLES20.glVertexAttribPointer(colorHandle,4,GLES20.GL_FLOAT,false,0,colorBuffer);//location count type normalized offset data
 
         //绘制三角形，关闭 顶点着色器 句柄
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES,0,vertexCount);

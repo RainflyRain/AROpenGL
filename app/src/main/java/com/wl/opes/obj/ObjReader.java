@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -204,6 +205,54 @@ public class ObjReader {
             obj.dataLock();
         }
         return data;
+    }
+
+    public static Face3D readFace(InputStream inputStream){
+
+        Face3D face3D = new Face3D();
+        String temp = null;
+        InputStreamReader reader = new InputStreamReader(inputStream);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+
+        try {
+            while ((temp = bufferedReader.readLine()) != null){
+                String[] temps=temp.split("[ ]+");
+                if (temps[0].trim().equals("v")){
+                    //vertex
+                   face3D.addVer(Float.parseFloat(temps[1]));
+                   face3D.addVer(Float.parseFloat(temps[2]));
+                   face3D.addVer(Float.parseFloat(temps[3]));
+                   //color
+                   face3D.addCor(Float.parseFloat(temps[4]));
+                   face3D.addCor(Float.parseFloat(temps[5]));
+                   face3D.addCor(Float.parseFloat(temps[6]));
+                }else if (temps[0].trim().equals("f")){
+                    face3D.addInd(Float.parseFloat(temps[1]));
+                    face3D.addInd(Float.parseFloat(temps[2]));
+                    face3D.addInd(Float.parseFloat(temps[3]));
+//                    int a = Integer.parseInt(temps[1])-1;
+//                    int b = Integer.parseInt(temps[2])-1;
+//                    int c = Integer.parseInt(temps[3])-1;
+//
+//                    face3D.addInd(face3D.getVer(a*3));
+//                    face3D.addInd(face3D.getVer(a*3+1));
+//                    face3D.addInd(face3D.getVer(a*3+2));
+//
+//                    face3D.addInd(face3D.getVer(b*3));
+//                    face3D.addInd(face3D.getVer(b*3+1));
+//                    face3D.addInd(face3D.getVer(b*3+2));
+//
+//                    face3D.addInd(face3D.getVer(c*3));
+//                    face3D.addInd(face3D.getVer(c*3+1));
+//                    face3D.addInd(face3D.getVer(c*3+2));
+
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return face3D;
+
     }
 
     /**
