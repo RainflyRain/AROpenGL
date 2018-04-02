@@ -227,9 +227,12 @@ public class ObjReader {
                    face3D.addCor(Float.parseFloat(temps[5]));
                    face3D.addCor(Float.parseFloat(temps[6]));
                 }else if (temps[0].trim().equals("f")){
-                    face3D.addInd(Float.parseFloat(temps[1]));
-                    face3D.addInd(Float.parseFloat(temps[2]));
-                    face3D.addInd(Float.parseFloat(temps[3]));
+                    if (face3D.getIndexCount() > 30000){
+                        break;
+                    }
+                    face3D.addInd(Short.parseShort(temps[1]));
+                    face3D.addInd(Short.parseShort(temps[2]));
+                    face3D.addInd(Short.parseShort(temps[3]));
 //                    int a = Integer.parseInt(temps[1])-1;
 //                    int b = Integer.parseInt(temps[2])-1;
 //                    int c = Integer.parseInt(temps[3])-1;

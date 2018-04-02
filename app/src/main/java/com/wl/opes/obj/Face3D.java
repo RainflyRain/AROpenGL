@@ -3,6 +3,7 @@ package com.wl.opes.obj;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 import java.util.ArrayList;
 
 public class Face3D {
@@ -10,14 +11,14 @@ public class Face3D {
     //顶点 和 颜色 数据
     private ArrayList<Float> vertexArray;
     private ArrayList<Float> colorArray;
-    private ArrayList<Float> indexArray;
+    private ArrayList<Short> indexArray;
 
     //顶点buffer
     private FloatBuffer vertexBuffer;
     //颜色buffer
     private FloatBuffer colorBuffer;
     //index buffer
-    private FloatBuffer indexBuffer;
+    private ShortBuffer indexBuffer;
 
     private int verCount;
     private int indexCount;
@@ -41,20 +42,20 @@ public class Face3D {
         colorArray.add(cor);
     }
 
-    public void addInd(Float ind){
+    public void addInd(Short ind){
         if (indexArray == null){
             indexArray = new ArrayList<>();
         }
-        indexArray.add(ind-1);
+        indexArray.add((short) (ind-1));
         indexCount = indexArray.size();
     }
 
-    public FloatBuffer getIndexBuffer() {
+    public ShortBuffer getIndexBuffer() {
         int size = indexArray.size();
         ByteBuffer byteBuffer = ByteBuffer.allocateDirect(size*4);
         byteBuffer.order(ByteOrder.nativeOrder());
 
-        indexBuffer = byteBuffer.asFloatBuffer();
+        indexBuffer = byteBuffer.asShortBuffer();
         for (int i = 0; i < size; i++) {
             indexBuffer.put(indexArray.get(i));
         }

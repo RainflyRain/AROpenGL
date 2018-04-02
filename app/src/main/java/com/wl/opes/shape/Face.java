@@ -52,7 +52,7 @@ public class Face extends Shape{
 
         //绘制三角形，关闭 顶点着色器 句柄
 //        GLES20.glDrawArrays(GLES20.GL_TRIANGLES,0,face3D.getVerCount());
-        GLES20.glDrawElements(GLES20.GL_TRIANGLES,face3D.getIndexCount(), GLES20.GL_UNSIGNED_SHORT,face3D.getIndexBuffer());
+        GLES20.glDrawElements(GLES20.GL_TRIANGLES,face3D.getIndexBuffer().capacity(), GLES20.GL_UNSIGNED_SHORT,face3D.getIndexBuffer());
         GLES20.glDisableVertexAttribArray(mHPosition);
         GLES20.glDisableVertexAttribArray(mHColor);
     }

@@ -71,7 +71,7 @@ public class FaceObjActivity extends AppCompatActivity implements View.OnTouchLi
 
             @Override
             public void onDrawFrame(GL10 gl) {
-                GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+//                GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
                 GLES20.glEnable(GLES20.GL_DEPTH_TEST);
                 GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 //                Matrix.rotateM(face.getMvpMatrix(),0,0.3f,0,1,0);
